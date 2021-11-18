@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="65f3dbd0a9084efb88b6cbde3618d498" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_TMDTModel.Blog" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.Cart" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.Cart_Item" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.Category" Width="1.5" PointX="7.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.Comment" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.HistoryTransaction" Width="1.5" PointX="7.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.OrderDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.Order" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.Payment" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.ProductDetail" Width="1.5" PointX="8.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.User" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.WareHouse" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.Wishlist" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TMDTModel.WishlistItem" Width="1.5" PointX="9.75" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="DB_TMDTModel.FK__Cart__UserID__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__Cart_Item__CartI__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__Cart_Item__Produ__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__Comment__Product__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__Comment__UserID__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__HistoryTr__Order__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__HistoryTr__Payme__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__OrderDeta__Produ__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__Orders__UserID__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_TMDTModel.FK__Payment__OrderID__3D5E1FD2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
