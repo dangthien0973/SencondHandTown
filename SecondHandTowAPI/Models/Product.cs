@@ -16,7 +16,7 @@ namespace SecondHandTowAPI.Models
             OrderDetail = new HashSet<OrderDetail>();
         }
 
-        public string ProductId { get; set; }
+        public int ProductId { get; set; }
         public int Price { get; set; }
         public int PriceSale { get; set; }
         public string ProductDetailsId { get; set; }

@@ -14,8 +14,8 @@ namespace SecondHandTowAPI.Models
             CartItem = new HashSet<CartItem>();
         }
 
-        public string CartId { get; set; }
-        public string UserId { get; set; }
+        public int CartId { get; set; }
+        public int UserId { get; set; }
         public string LastModified { get; set; }
 
         public virtual Users User { get; set; }

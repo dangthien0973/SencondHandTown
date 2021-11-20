@@ -9,7 +9,7 @@ namespace SecondHandTowAPI.Models
 {
     public partial class Category
     {
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public string NameCategory { get; set; }
     }
 }

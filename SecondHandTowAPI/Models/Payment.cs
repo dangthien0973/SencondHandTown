@@ -14,10 +14,10 @@ namespace SecondHandTowAPI.Models
             HistoryTransaction = new HashSet<HistoryTransaction>();
         }
 
-        public string PaymentId { get; set; }
+        public int PaymentId { get; set; }
         public string TypePayment { get; set; }
         public DateTime DatePayment { get; set; }
-        public string OrderId { get; set; }
+        public int OrderId { get; set; }
 
         public virtual Orders Order { get; set; }
         public virtual ICollection<HistoryTransaction> HistoryTransaction { get; set; }

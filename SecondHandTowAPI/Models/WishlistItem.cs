@@ -9,7 +9,7 @@ namespace SecondHandTowAPI.Models
 {
     public partial class WishlistItem
     {
-        public string WishlistId { get; set; }
+        public int WishlistId { get; set; }
         public string ProductId { get; set; }
     }
 }

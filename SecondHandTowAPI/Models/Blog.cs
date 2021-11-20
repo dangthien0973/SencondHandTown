@@ -9,7 +9,7 @@ namespace SecondHandTowAPI.Models
 {
     public partial class Blog
     {
-        public string BlogId { get; set; }
+        public int BlogId { get; set; }
         public string Title { get; set; }
         public string Descriptions { get; set; }
         public string Images { get; set; }

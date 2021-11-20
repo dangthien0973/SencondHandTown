@@ -9,7 +9,7 @@ namespace SecondHandTowAPI.Models
 {
     public partial class WareHouse
     {
-        public string WareHouseId { get; set; }
+        public int WareHouseId { get; set; }
         public DateTime ImportDate { get; set; }
         public DateTime ExportDate { get; set; }
         public string ProductId { get; set; }

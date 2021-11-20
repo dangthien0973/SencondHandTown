@@ -9,10 +9,10 @@ namespace SecondHandTowAPI.Models
 {
     public partial class HistoryTransaction
     {
-        public string HistoryTransationId { get; set; }
-        public string PaymentId { get; set; }
+        public int HistoryTransationId { get; set; }
+        public int PaymentId { get; set; }
         public DateTime DateCreated { get; set; }
-        public string OrderId { get; set; }
+        public int OrderId { get; set; }
 
         public virtual Orders Order { get; set; }
         public virtual Payment Payment { get; set; }

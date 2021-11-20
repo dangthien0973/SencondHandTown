@@ -40,7 +40,7 @@ namespace SecondHandTowAPI.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-U43RBEG\\SQLEXPRESS;Initial Catalog=DB_TMDT;Persist Security Info=True;User ID=sa;Password=123;MultipleActiveResultSets=True;Application Name=EntityFramework");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-U43RBEG\\SQLEXPRESS;Initial Catalog=DB_TMDT;User ID=sa;Password=123;MultipleActiveResultSets=True;Application Name=EntityFramework");
             }
         }
 
@@ -48,9 +48,7 @@ namespace SecondHandTowAPI.Models
         {
             modelBuilder.Entity<Blog>(entity =>
             {
-                entity.Property(e => e.BlogId)
-                    .HasColumnName("BlogID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.BlogId).HasColumnName("BlogID");
 
                 entity.Property(e => e.Descriptions)
                     .IsRequired()
@@ -68,16 +66,11 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<Cart>(entity =>
             {
-                entity.Property(e => e.CartId)
-                    .HasColumnName("CartID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.CartId).HasColumnName("CartID");
 
                 entity.Property(e => e.LastModified).HasMaxLength(50);
 
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasColumnName("UserID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Cart)
@@ -90,19 +83,11 @@ namespace SecondHandTowAPI.Models
             {
                 entity.ToTable("Cart_Item");
 
-                entity.Property(e => e.CartItemId)
-                    .HasColumnName("CartItemID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.CartItemId).HasColumnName("CartItemID");
 
-                entity.Property(e => e.CartId)
-                    .IsRequired()
-                    .HasColumnName("CartID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.CartId).HasColumnName("CartID");
 
-                entity.Property(e => e.ProductId)
-                    .IsRequired()
-                    .HasColumnName("ProductID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.HasOne(d => d.Cart)
                     .WithMany(p => p.CartItem)
@@ -119,9 +104,7 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.Property(e => e.CategoryId)
-                    .HasColumnName("CategoryID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
                 entity.Property(e => e.NameCategory)
                     .IsRequired()
@@ -131,24 +114,16 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<Comment>(entity =>
             {
-                entity.Property(e => e.CommentId)
-                    .HasColumnName("CommentID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.CommentId).HasColumnName("CommentID");
 
                 entity.Property(e => e.BodyComment)
                     .IsRequired()
                     .HasColumnName("Body_Comment")
                     .HasMaxLength(100);
 
-                entity.Property(e => e.ProductId)
-                    .IsRequired()
-                    .HasColumnName("ProductID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasColumnName("UserID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.Comment)
@@ -166,23 +141,15 @@ namespace SecondHandTowAPI.Models
             modelBuilder.Entity<HistoryTransaction>(entity =>
             {
                 entity.HasKey(e => e.HistoryTransationId)
-                    .HasName("PK__HistoryT__732F2C19A63E535F");
+                    .HasName("PK__HistoryT__732F2C1963F4017D");
 
-                entity.Property(e => e.HistoryTransationId)
-                    .HasColumnName("HistoryTransationID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.HistoryTransationId).HasColumnName("HistoryTransationID");
 
                 entity.Property(e => e.DateCreated).HasColumnType("smalldatetime");
 
-                entity.Property(e => e.OrderId)
-                    .IsRequired()
-                    .HasColumnName("OrderID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
-                entity.Property(e => e.PaymentId)
-                    .IsRequired()
-                    .HasColumnName("PaymentID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.PaymentId).HasColumnName("PaymentID");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.HistoryTransaction)
@@ -199,14 +166,9 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {
-                entity.Property(e => e.OrderDetailId)
-                    .HasColumnName("OrderDetailID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
 
-                entity.Property(e => e.ProductId)
-                    .IsRequired()
-                    .HasColumnName("ProductID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetail)
@@ -218,11 +180,9 @@ namespace SecondHandTowAPI.Models
             modelBuilder.Entity<Orders>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Orders__C3905BAF0BB892D5");
+                    .HasName("PK__Orders__C3905BAF0D5D0AA8");
 
-                entity.Property(e => e.OrderId)
-                    .HasColumnName("OrderID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.Addresss)
                     .IsRequired()
@@ -240,10 +200,7 @@ namespace SecondHandTowAPI.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasColumnName("UserID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
@@ -254,16 +211,11 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<Payment>(entity =>
             {
-                entity.Property(e => e.PaymentId)
-                    .HasColumnName("PaymentID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.PaymentId).HasColumnName("PaymentID");
 
                 entity.Property(e => e.DatePayment).HasColumnType("smalldatetime");
 
-                entity.Property(e => e.OrderId)
-                    .IsRequired()
-                    .HasColumnName("OrderID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.TypePayment)
                     .IsRequired()
@@ -278,9 +230,7 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.Property(e => e.ProductId)
-                    .HasColumnName("ProductID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.Property(e => e.PriceSale).HasColumnName("Price_Sale");
 
@@ -292,9 +242,7 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<ProductDetail>(entity =>
             {
-                entity.Property(e => e.ProductDetailId)
-                    .HasColumnName("Product_detail_id")
-                    .HasMaxLength(50);
+                entity.Property(e => e.ProductDetailId).HasColumnName("Product_detail_id");
 
                 entity.Property(e => e.Descriptions)
                     .IsRequired()
@@ -314,11 +262,9 @@ namespace SecondHandTowAPI.Models
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__Users__1788CCACFFE0B0BE");
+                    .HasName("PK__Users__1788CCAC2A853CF2");
 
-                entity.Property(e => e.UserId)
-                    .HasColumnName("UserID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.Property(e => e.Address)
                     .IsRequired()
@@ -349,9 +295,7 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<WareHouse>(entity =>
             {
-                entity.Property(e => e.WareHouseId)
-                    .HasColumnName("WareHouseID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.WareHouseId).HasColumnName("WareHouseID");
 
                 entity.Property(e => e.ExportDate).HasColumnType("smalldatetime");
 
@@ -365,19 +309,17 @@ namespace SecondHandTowAPI.Models
 
             modelBuilder.Entity<Wishlist>(entity =>
             {
-                entity.Property(e => e.WishlistId)
-                    .HasColumnName("WishlistID")
-                    .HasMaxLength(50);
+                entity.Property(e => e.WishlistId).HasColumnName("WishlistID");
             });
 
             modelBuilder.Entity<WishlistItem>(entity =>
             {
                 entity.HasKey(e => new { e.WishlistId, e.ProductId })
-                    .HasName("PK__Wishlist__E87145A5D21F88A5");
+                    .HasName("PK__Wishlist__E87145A5855FB379");
 
                 entity.Property(e => e.WishlistId)
                     .HasColumnName("WishlistID")
-                    .HasMaxLength(50);
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.ProductId)
                     .HasColumnName("ProductID")

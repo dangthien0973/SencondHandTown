@@ -15,9 +15,9 @@ namespace SecondHandTowAPI.Models
             Payment = new HashSet<Payment>();
         }
 
-        public string OrderId { get; set; }
+        public int OrderId { get; set; }
         public string Addresss { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public string ExpextedDelivery { get; set; }
         public string Shipfee { get; set; }
         public int Originalprice { get; set; }

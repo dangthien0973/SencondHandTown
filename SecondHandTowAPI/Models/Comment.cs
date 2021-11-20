@@ -9,10 +9,10 @@ namespace SecondHandTowAPI.Models
 {
     public partial class Comment
     {
-        public string CommentId { get; set; }
-        public string UserId { get; set; }
+        public int CommentId { get; set; }
+        public int UserId { get; set; }
         public string BodyComment { get; set; }
-        public string ProductId { get; set; }
+        public int ProductId { get; set; }
 
         public virtual Product Product { get; set; }
         public virtual Users User { get; set; }

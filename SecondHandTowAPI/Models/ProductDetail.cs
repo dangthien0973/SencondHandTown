@@ -9,7 +9,7 @@ namespace SecondHandTowAPI.Models
 {
     public partial class ProductDetail
     {
-        public string ProductDetailId { get; set; }
+        public int ProductDetailId { get; set; }
         public string SourceOrigin { get; set; }
         public string NameProduct { get; set; }
         public string Descriptions { get; set; }

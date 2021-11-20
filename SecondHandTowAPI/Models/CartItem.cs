@@ -9,9 +9,9 @@ namespace SecondHandTowAPI.Models
 {
     public partial class CartItem
     {
-        public string CartItemId { get; set; }
-        public string CartId { get; set; }
-        public string ProductId { get; set; }
+        public int CartItemId { get; set; }
+        public int CartId { get; set; }
+        public int ProductId { get; set; }
         public int Quantity { get; set; }
         public int TotalPrice { get; set; }
 

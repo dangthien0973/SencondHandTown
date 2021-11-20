@@ -9,8 +9,8 @@ namespace SecondHandTowAPI.Models
 {
     public partial class OrderDetail
     {
-        public string OrderDetailId { get; set; }
-        public string ProductId { get; set; }
+        public int OrderDetailId { get; set; }
+        public int ProductId { get; set; }
         public int Quantity { get; set; }
         public int Totalorderdetailprice { get; set; }
         public int Unitprice { get; set; }
