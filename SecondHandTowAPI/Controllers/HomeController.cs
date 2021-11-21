@@ -11,7 +11,7 @@ namespace SecondHandTowAPI.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
+            var data = "abc";
             return View();
         }
     }
