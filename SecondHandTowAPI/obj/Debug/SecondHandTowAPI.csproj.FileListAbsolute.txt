@@ -249,7 +249,6 @@ E:\SecondHandTowAPI\SecondHandTowAPI\bin\pt-BR\Microsoft.Data.SqlClient.resource
 E:\SecondHandTowAPI\SecondHandTowAPI\bin\ru\Microsoft.Data.SqlClient.resources.dll
 E:\SecondHandTowAPI\SecondHandTowAPI\bin\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 E:\SecondHandTowAPI\SecondHandTowAPI\bin\zh-Hant\Microsoft.Data.SqlClient.resources.dll
-E:\SecondHandTowAPI\SecondHandTowAPI\obj\Debug\SecondHandTowAPI.csprojAssemblyReference.cache
 E:\SecondHandTowAPI\SecondHandTowAPI\obj\Debug\SecondHandTowAPI.csproj.CoreCompileInputs.cache
 E:\SecondHandTowAPI\SecondHandTowAPI\obj\Debug\SecondHandTowAPI.csproj.CopyComplete
 E:\SecondHandTowAPI\SecondHandTowAPI\obj\Debug\SecondHandTowAPI.dll
@@ -257,3 +256,4 @@ E:\SecondHandTowAPI\SecondHandTowAPI\obj\Debug\SecondHandTowAPI.pdb
 E:\SecondHandTowAPI\SecondHandTowAPI\bin\Microsoft.EntityFrameworkCore.Design.dll
 E:\SecondHandTowAPI\SecondHandTowAPI\bin\Microsoft.EntityFrameworkCore.Design.xml
 E:\SecondHandTowAPI\SecondHandTowAPI\obj\Debug\SecondHandTowAPI.dll.config
+E:\SecondHandTowAPI\SecondHandTowAPI\obj\Debug\SecondHandTowAPI.csprojAssemblyReference.cache

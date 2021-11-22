@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SecondHandTowAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,9 +11,13 @@ namespace SecondHandTowAPI.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        [Route("getListUser")]
+        public List<User> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<User> lstUser = new List<User>();
+            User user = new User();
+            lstUser = user.GetAllUser();
+         return lstUser;
         }
 
         // GET api/values/5
@@ -22,9 +27,19 @@ namespace SecondHandTowAPI.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        [Route("InsertUser")]
+        public string Post(User user)
         {
+            User userAdd = new User();
+            userAdd.UserName = user.UserName;
+            userAdd.Passwords = user.Passwords;
+            userAdd.Address = user.Address;
+            userAdd.Email = user.Email;
+
+            string mess = userAdd.InsertUser();
+            return mess;
         }
+        
 
         // PUT api/values/5
         public void Put(int id, [FromBody]string value)
