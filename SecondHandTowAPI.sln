@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1525
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondHandTowAPI", "SecondHandTowAPI\SecondHandTowAPI.csproj", "{08118D56-663C-40EB-9D9D-4AC81E6B9239}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APISencondHandTown", "APISencondHandTown\APISencondHandTown.csproj", "{749DEF51-677C-4183-B825-971488039323}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{08118D56-663C-40EB-9D9D-4AC81E6B9239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08118D56-663C-40EB-9D9D-4AC81E6B9239}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08118D56-663C-40EB-9D9D-4AC81E6B9239}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08118D56-663C-40EB-9D9D-4AC81E6B9239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{749DEF51-677C-4183-B825-971488039323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{749DEF51-677C-4183-B825-971488039323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{749DEF51-677C-4183-B825-971488039323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{749DEF51-677C-4183-B825-971488039323}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
