@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\SencondHandTown\\APISencondHandTown\\APISencondHandTown.csproj": {}
+    "E:\\TMDT\\APISencondHandTown\\APISencondHandTown.csproj": {}
   },
   "projects": {
-    "E:\\SencondHandTown\\APISencondHandTown\\APISencondHandTown.csproj": {
+    "E:\\TMDT\\APISencondHandTown\\APISencondHandTown.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SencondHandTown\\APISencondHandTown\\APISencondHandTown.csproj",
+        "projectUniqueName": "E:\\TMDT\\APISencondHandTown\\APISencondHandTown.csproj",
         "projectName": "APISencondHandTown",
-        "projectPath": "E:\\SencondHandTown\\APISencondHandTown\\APISencondHandTown.csproj",
-        "packagesPath": "C:\\Users\\Hi\\.nuget\\packages\\",
-        "outputPath": "E:\\SencondHandTown\\APISencondHandTown\\obj\\",
+        "projectPath": "E:\\TMDT\\APISencondHandTown\\APISencondHandTown.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "E:\\TMDT\\APISencondHandTown\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Hi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +40,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -90,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

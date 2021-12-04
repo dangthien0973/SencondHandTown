@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using BC = BCrypt.Net.BCrypt;
 using System.Threading.Tasks;
 
 namespace APISencondHandTown.Controllers
@@ -36,15 +37,24 @@ namespace APISencondHandTown.Controllers
             try
             {
 
-                var user = _context.Users.SingleOrDefault(p => p.UserName == userModel.UserName && p.Passwords == userModel.Passwords);
+                var user = _context.Users.FirstOrDefault(p => p.UserName == userModel.UserName);
                 if (user == null)
                 {
-                    return Ok(new {
+                    return Ok(new
+                    {
                         Status = false,
-                        Message="Tên đăng nhập hoặc mật khẩu không đúng nè"
+                        Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
 
                     });
-                }
+                }  if (!BC.Verify(userModel.Passwords, user.Passwords))
+                    {
+                        return Ok(new
+                        {
+                            Status = false,
+                            Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
+
+                        });
+                    }
                 else
                 {
                     /*return Ok(user);*/
@@ -59,6 +69,43 @@ namespace APISencondHandTown.Controllers
                 }
             }
             catch(Exception e)
+            {
+                return Ok(e);
+            }
+        }
+        [HttpPost("Register")]
+        public IActionResult Register(RegisterUser registerUser)
+        {
+            try
+            {
+
+                var user = new User()
+                {
+                    UserName = registerUser.UserName,
+                    Passwords = BC.HashPassword(registerUser.Passwords),
+                    /*   Passwords=registerUser.Passwords,*/
+                    Address = registerUser.Address,
+                    Phone = registerUser.Phone,
+                    Email = registerUser.Email,
+                    DateCreated = registerUser.Created1,
+                    Roles = registerUser.Roles,
+                    Statuss = registerUser.Statuss,
+
+
+
+                };
+
+            
+                    _context.Users.Add(user);
+                      _context.SaveChanges();
+                    
+                
+                return Ok("success");       
+
+                
+                
+            }
+            catch (Exception e)
             {
                 return Ok(e);
             }
