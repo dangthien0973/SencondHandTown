@@ -17,7 +17,7 @@ namespace APISencondHandTown.Models
         public int ProductId { get; set; }
         public int Price { get; set; }
         public int PriceSale { get; set; }
-        public string ProductDetailsId { get; set; }
+        public int ProductDetailsId { get; set; }
         public int Amount { get; set; }
 
         public virtual ICollection<CartItem> CartItems { get; set; }
