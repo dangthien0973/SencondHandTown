@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using BC = BCrypt.Net.BCrypt;
 using System.Threading.Tasks;
+using PagedList;
 
 namespace APISencondHandTown.Controllers
 {
@@ -109,6 +110,40 @@ namespace APISencondHandTown.Controllers
             {
                 return Ok(e);
             }
+        }
+        [HttpPost("getProducList")]
+        public IActionResult getProducList(userPage userPage)
+        {
+
+
+            IEnumerable<Product> productslist = _context.Products;
+            if (userPage.filedName == "price" && userPage.sortType == "des")
+            {
+
+                productslist = productslist.OrderByDescending(s => s.Price);
+            }
+            else if (userPage.filedName == "price" && userPage.sortType == "asc")
+            {
+
+                productslist = productslist.OrderBy(s => s.Price);
+            }
+            var sort = new
+            {
+                userPage.filedName,
+                userPage.sortType,
+
+            };
+
+
+            var payload = productslist.ToPagedList(userPage.Page, userPage.PageSize);
+            return Ok(new
+            {
+                userPage.Page,
+                userPage.PageSize,
+                sort,
+                payload
+            }
+               );
         }
         private string GenerateToken(User user)
         {

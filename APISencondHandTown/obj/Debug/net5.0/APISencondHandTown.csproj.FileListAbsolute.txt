@@ -125,3 +125,4 @@ E:\TMDT\APISencondHandTown\obj\Debug\net5.0\APISencondHandTown.pdb
 E:\TMDT\APISencondHandTown\obj\Debug\net5.0\APISencondHandTown.genruntimeconfig.cache
 E:\TMDT\APISencondHandTown\bin\Debug\net5.0\BCrypt.Net-Next.dll
 E:\TMDT\APISencondHandTown\obj\Debug\net5.0\APISencondHandTown.csproj.AssemblyReference.cache
+E:\TMDT\APISencondHandTown\bin\Debug\net5.0\PagedList.dll

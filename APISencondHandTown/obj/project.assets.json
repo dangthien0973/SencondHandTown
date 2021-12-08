@@ -493,6 +493,15 @@
           }
         }
       },
+      "PagedList/1.17.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/PagedList.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2432,6 +2441,19 @@
         "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.xml",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "PagedList/1.17.0": {
+      "sha512": "Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
+      "type": "package",
+      "path": "pagedlist/1.17.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/PagedList.dll",
+        "lib/net40/PagedList.xml",
+        "pagedlist.1.17.0.nupkg.sha512",
+        "pagedlist.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -5902,6 +5924,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 5.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.0",
+      "PagedList >= 1.17.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -5976,6 +5999,10 @@
             "target": "Package",
             "version": "[5.0.0, )"
           },
+          "PagedList": {
+            "target": "Package",
+            "version": "[1.17.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[5.6.3, )"
@@ -6002,5 +6029,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PagedList 1.17.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PagedList",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

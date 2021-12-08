@@ -72,6 +72,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "PagedList": {
+              "target": "Package",
+              "version": "[1.17.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
