@@ -12,6 +12,7 @@ using System.Text;
 using BC = BCrypt.Net.BCrypt;
 using System.Threading.Tasks;
 using PagedList;
+using APISencondHandTown.Error;
 
 namespace APISencondHandTown.Controllers
 {
@@ -47,7 +48,9 @@ namespace APISencondHandTown.Controllers
                         Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
 
                     });
-                }  if (!BC.Verify(userModel.Passwords, user.Passwords))
+                }
+                
+                if (!BC.Verify(userModel.Passwords, user.Passwords))
                     {
                         return Ok(new
                         {
@@ -69,9 +72,10 @@ namespace APISencondHandTown.Controllers
                     });
                 }
             }
-            catch(Exception e)
+            catch(ErrorLoginExeption e)
             {
                 return Ok(e);
+              
             }
         }
         [HttpPost("Register")]
@@ -95,10 +99,18 @@ namespace APISencondHandTown.Controllers
 
 
                 };
-
-            
+                if(_context.Users.FirstOrDefault(p => p.UserName == registerUser.UserName) == null)
+                {
                     _context.Users.Add(user);
-                      _context.SaveChanges();
+                    _context.SaveChanges();
+                   
+                }
+                else
+                {
+                    return Ok("The account is already in use ");
+                }
+            
+                   
                     
                 
                 return Ok("success");       
@@ -108,7 +120,8 @@ namespace APISencondHandTown.Controllers
             }
             catch (Exception e)
             {
-                return Ok(e);
+                return Ok(e.Message);
+               
             }
         }
         [HttpPost("getProducList")]
