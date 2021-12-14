@@ -47,8 +47,7 @@ namespace APISencondHandTown.Controllers
                         Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
                     });
                 }                
-                if (!BC.Verify(userModel.Passwords, user.Passwords))
-                  
+                if (!BC.Verify(userModel.Passwords, user.Passwords))                
                 {
                         return Ok(new
                         {
@@ -65,7 +64,6 @@ namespace APISencondHandTown.Controllers
                         Status = true,
                         Message = "Cấp Token nè ae",
                         Data = GenerateToken(user)
-
                     });
                 }
             }
