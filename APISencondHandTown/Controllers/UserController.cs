@@ -12,6 +12,7 @@ using System.Text;
 using BC = BCrypt.Net.BCrypt;
 using System.Threading.Tasks;
 using PagedList;
+using APISencondHandTown.Error;
 
 namespace APISencondHandTown.Controllers
 {
@@ -37,7 +38,6 @@ namespace APISencondHandTown.Controllers
         {
             try
             {
-
                 var user = _context.Users.FirstOrDefault(p => p.UserName == userModel.UserName);
                 if (user == null)
                 {
@@ -45,15 +45,14 @@ namespace APISencondHandTown.Controllers
                     {
                         Status = false,
                         Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
-
                     });
-                }  if (!BC.Verify(userModel.Passwords, user.Passwords))
-                    {
+                }                
+                if (!BC.Verify(userModel.Passwords, user.Passwords))                
+                {
                         return Ok(new
                         {
                             Status = false,
                             Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
-
                         });
                     }
                 else
@@ -65,13 +64,12 @@ namespace APISencondHandTown.Controllers
                         Status = true,
                         Message = "Cấp Token nè ae",
                         Data = GenerateToken(user)
-
                     });
                 }
             }
             catch(Exception e)
             {
-                return Ok(e);
+                return Ok(e); 
             }
         }
         [HttpPost("Register")]
@@ -79,7 +77,6 @@ namespace APISencondHandTown.Controllers
         {
             try
             {
-
                 var user = new User()
                 {
                     UserName = registerUser.UserName,
@@ -91,50 +88,40 @@ namespace APISencondHandTown.Controllers
                     DateCreated = registerUser.Created1,
                     Roles = registerUser.Roles,
                     Statuss = registerUser.Statuss,
-
-
-
                 };
-
-            
+                if(_context.Users.FirstOrDefault(p => p.UserName == registerUser.UserName) == null)
+                {
                     _context.Users.Add(user);
-                      _context.SaveChanges();
-                    
-                
-                return Ok("success");       
-
-                
-                
+                    _context.SaveChanges();                   
+                }
+                else
+                {
+                    return Ok("The account is already in use ");
+                }    
+                return Ok("success");            
             }
             catch (Exception e)
             {
-                return Ok(e);
+                return Ok(e.Message);              
             }
         }
         [HttpPost("getProducList")]
         public IActionResult getProducList(userPage userPage)
         {
-
-
             IEnumerable<Product> productslist = _context.Products;
             if (userPage.filedName == "price" && userPage.sortType == "des")
             {
-
                 productslist = productslist.OrderByDescending(s => s.Price);
             }
             else if (userPage.filedName == "price" && userPage.sortType == "asc")
             {
-
                 productslist = productslist.OrderBy(s => s.Price);
             }
             var sort = new
             {
                 userPage.filedName,
                 userPage.sortType,
-
             };
-
-
             var payload = productslist.ToPagedList(userPage.Page, userPage.PageSize);
             return Ok(new
             {
@@ -157,7 +144,6 @@ namespace APISencondHandTown.Controllers
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim("Id", user.UserId.ToString()),
-
                     new Claim("tokenID", Guid.NewGuid().ToString())
                 }),
                 Expires = DateTime.UtcNow.AddSeconds(30),
