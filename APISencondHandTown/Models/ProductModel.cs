@@ -28,6 +28,7 @@ namespace APISencondHandTown.Models
         public int ProductDetailsId1 { get => ProductDetailsId; set => ProductDetailsId = value; }
         public int Amount1 { get => Amount; set => Amount = value; }
 
+
     }
 
 }
