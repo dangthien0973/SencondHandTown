@@ -29,6 +29,7 @@ namespace APISencondHandTown.Models
         public int Amount1 { get => Amount; set => Amount = value; }
 
 
+
     }
 
 }
