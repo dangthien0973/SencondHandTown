@@ -15,6 +15,7 @@ namespace APISencondHandTown.Models
         }
 
         public int ProductId { get; set; }
+        public string ProductName { get; set; }
         public int Price { get; set; }
         public int PriceSale { get; set; }
         public int ProductDetailsId { get; set; }

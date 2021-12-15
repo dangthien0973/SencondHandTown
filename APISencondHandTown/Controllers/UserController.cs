@@ -21,7 +21,7 @@ namespace APISencondHandTown.Controllers
     {
         private readonly DB_TMDTContext _context;
         private readonly AppSettings _appSettings;
-        public UserController(DB_TMDTContext context,IOptionsMonitor<AppSettings> optionMonitor)
+        public UserController(DB_TMDTContext context, IOptionsMonitor<AppSettings> optionMonitor)
         {
             _context = context;
             _appSettings = optionMonitor.CurrentValue;
@@ -30,6 +30,7 @@ namespace APISencondHandTown.Controllers
         [HttpGet("getAllUser")]
         public IActionResult Validate()
         {
+            // Console.WriteLine("alo alolo");
             return Ok();
         }
         [HttpPost("Login")]
@@ -47,15 +48,16 @@ namespace APISencondHandTown.Controllers
                         Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
 
                     });
-                }  if (!BC.Verify(userModel.Passwords, user.Passwords))
-                    {
-                        return Ok(new
-                        {
-                            Status = false,
-                            Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
+                }
+                // if (!BC.Verify(userModel.Passwords, user.Passwords))
+                // {
+                //     return Ok(new
+                //     {
+                //         Status = false,
+                //         Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
 
-                        });
-                    }
+                //     });
+                // }
                 else
                 {
                     /*return Ok(user);*/
@@ -69,7 +71,7 @@ namespace APISencondHandTown.Controllers
                     });
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return Ok(e);
             }
@@ -96,15 +98,15 @@ namespace APISencondHandTown.Controllers
 
                 };
 
-            
-                    _context.Users.Add(user);
-                      _context.SaveChanges();
-                    
-                
-                return Ok("success");       
 
-                
-                
+                _context.Users.Add(user);
+                _context.SaveChanges();
+
+
+                return Ok("success");
+
+
+
             }
             catch (Exception e)
             {
@@ -161,10 +163,98 @@ namespace APISencondHandTown.Controllers
                     new Claim("tokenID", Guid.NewGuid().ToString())
                 }),
                 Expires = DateTime.UtcNow.AddSeconds(30),
-                SigningCredentials=new SigningCredentials(new SymmetricSecurityKey(secretByte),SecurityAlgorithms.HmacSha512Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretByte), SecurityAlgorithms.HmacSha512Signature)
             };
             var token = jwtToken.CreateToken(tokenDescription);
             return jwtToken.WriteToken(token);
         }
+
+        [HttpPost("addProduct")]
+        public IActionResult addProduct(ProductModel productModel)
+        {
+
+            try
+            {
+
+                var product = new Product()
+                {
+
+                    ProductName = productModel.ProductName1,
+                    Price = productModel.Price1,
+                    PriceSale = productModel.PriceSale1,
+                    ProductDetailsId = productModel.ProductDetailsId1,
+                    Amount = productModel.Amount1,
+
+
+                };
+
+                _context.Products.Add(product);
+                _context.SaveChanges();
+
+                return Ok("success addProduct");
+
+            }
+            catch (Exception e)
+            {
+                return Ok(e);
+            }
+        }
+
+        [HttpPost("addCategory")]
+        public IActionResult addCategory(CategoryModel categoryModel)
+        {
+
+
+            try
+            {
+
+                var category = new Category()
+                {
+
+                    NameCategory = categoryModel.NameCategory1,
+
+
+                };
+
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+
+                return Ok("success addCategory");
+
+            }
+            catch (Exception e)
+            {
+                return Ok(e);
+            }
+
+
+        }
+
+        // [HttpPost("testAddCategory")]
+        // public IActionResult testAddCategory(Category category)
+        // {
+
+
+        //     try
+        //     {           
+
+
+        //         // NameCategory1=category.NameCategory,
+        //         _context.Categories.Add(category);
+        //         _context.SaveChanges();
+
+        //         return Ok("success");
+
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         return Ok(e);
+        //     }
+
+
+        // }
+
     }
+
+
 }
