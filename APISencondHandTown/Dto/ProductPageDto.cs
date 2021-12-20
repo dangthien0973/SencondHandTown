@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APISencondHandTown.Models
+namespace APISencondHandTown.Dto
 {
   
-    public class userPage
+    public class ProductPageDto
     {
 
         public int Page { get; set; }

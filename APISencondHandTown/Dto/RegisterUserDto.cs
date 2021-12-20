@@ -1,16 +1,11 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace APISencondHandTown.Models
+namespace APISencondHandTown.Dto
 {
-  
-    public class RegisterUser
+
+    public class RegisterUserDto
     {
         #region  bien
-      
         private string strAddress = String.Empty;
         private string strPhone = String.Empty;
         private string strEmail = String.Empty;
@@ -20,12 +15,10 @@ namespace APISencondHandTown.Models
         private int intRoles = 0;
         private string strStatuss = String.Empty;
         #endregion
-        public RegisterUser()
+        public RegisterUserDto()
         {
-
         }
         #region thuoc tinh cho ae
-      
         public string Address { get => strAddress; set => strAddress = value; }
         public string Phone { get => strPhone; set => strPhone = value; }
         public string Email { get => strEmail; set => strEmail = value; }
@@ -35,9 +28,6 @@ namespace APISencondHandTown.Models
         public int Roles { get => intRoles; set => intRoles = value; }
         public string Statuss { get => strStatuss; set => strStatuss = value; }
         #endregion
-
-       
-
     }
-   
+
 }
