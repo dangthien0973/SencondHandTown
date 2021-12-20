@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Db1jXr3Ei3GeVprJAy7FX5yN2LSRbQdp8yj/Q3sZ9nTCkjURjKIu1ZTdwe8b+fA6lTYJpq8xvhUh5uZWqBCDww==",
+  "dgSpecHash": "3p9vJQa4Q55vYLUUoOZEpAno9M9ugOvNUeYWgct5twZgeLtJmNYOctdiI9viE6ZIddXhrShcrbyD3vkloQQJmg==",
   "success": true,
-  "projectFilePath": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\source\\APISencondHandTown\\APISencondHandTown.csproj",
+  "projectFilePath": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\New folder\\APISencondHandTown\\APISencondHandTown.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",

@@ -1,17 +1,14 @@
 ﻿using APISencondHandTown.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using BC = BCrypt.Net.BCrypt;
-using System.Threading.Tasks;
-using PagedList;
+using APISencondHandTown.Repositories;
+using APISencondHandTown.Dto;
 
 namespace APISencondHandTown.Controllers
 {
@@ -19,45 +16,43 @@ namespace APISencondHandTown.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly DB_TMDTContext _context;
+        private readonly IRepository<User> _userRepository;
+        private readonly IUserRepository _userRepositoryMoreMethod;
         private readonly AppSettings _appSettings;
-        public UserController(DB_TMDTContext context, IOptionsMonitor<AppSettings> optionMonitor)
+        public UserController(IOptionsMonitor<AppSettings> optionMonitor, IUserRepository _userRepositoryMoreMethod, IRepository<User> _userRepository)
         {
-            _context = context;
+            this._userRepository = _userRepository;         
             _appSettings = optionMonitor.CurrentValue;
+           this._userRepositoryMoreMethod= _userRepositoryMoreMethod;
         }
 
         [HttpGet("getAllUser")]
         public IActionResult Validate()
         {
-            // Console.WriteLine("alo alolo");
             return Ok();
         }
         [HttpPost("Login")]
-        public IActionResult Validate(UserModel userModel)
+        public IActionResult Validate(UserModelDto UserModelDto)
         {
             try
             {
-
-                var user = _context.Users.FirstOrDefault(p => p.UserName == userModel.UserName);
+                var user = _userRepositoryMoreMethod.getByUserName(UserModelDto);
                 if (user == null)
                 {
                     return Ok(new
                     {
                         Status = false,
                         Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
-
                     });
-                }
-                // if (!BC.Verify(userModel.Passwords, user.Passwords))
-                // {
-                //     return Ok(new
-                //     {
-                //         Status = false,
-                //         Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
-
-                //     });
-                // }
+                }                
+                if (!BC.Verify(UserModelDto.Passwords, user.Passwords))                
+                {
+                        return Ok(new
+                        {
+                            Status = false,
+                            Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
+                        });
+                    }
                 else
                 {
                     /*return Ok(user);*/
@@ -67,23 +62,22 @@ namespace APISencondHandTown.Controllers
                         Status = true,
                         Message = "Cấp Token nè ae",
                         Data = GenerateToken(user)
-
                     });
                 }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                return Ok(e);
+                return Ok(e); 
             }
         }
         [HttpPost("Register")]
-        public IActionResult Register(RegisterUser registerUser)
+        public IActionResult Register(RegisterUserDto registerUser)
         {
             try
             {
-
                 var user = new User()
                 {
+                    
                     UserName = registerUser.UserName,
                     Passwords = BC.HashPassword(registerUser.Passwords),
                     /*   Passwords=registerUser.Passwords,*/
@@ -93,59 +87,22 @@ namespace APISencondHandTown.Controllers
                     DateCreated = registerUser.Created1,
                     Roles = registerUser.Roles,
                     Statuss = registerUser.Statuss,
-
-
-
                 };
-
-
-                _context.Users.Add(user);
-                _context.SaveChanges();
-
-
-                return Ok("success");
-
-
-
+                if(_userRepositoryMoreMethod.isCheckByUserName(registerUser) == null)
+                {
+                  _userRepository.Add(user);
+                  _userRepository.SaveChanges();                  
+                }
+                else
+                {
+                    return Ok("The account is already in use ");
+                }    
+                return Ok("success");            
             }
             catch (Exception e)
             {
-                return Ok(e);
+                return Ok(e.Message);              
             }
-        }
-        [HttpPost("getProducList")]
-        public IActionResult getProducList(userPage userPage)
-        {
-
-
-            IEnumerable<Product> productslist = _context.Products;
-            if (userPage.filedName == "price" && userPage.sortType == "des")
-            {
-
-                productslist = productslist.OrderByDescending(s => s.Price);
-            }
-            else if (userPage.filedName == "price" && userPage.sortType == "asc")
-            {
-
-                productslist = productslist.OrderBy(s => s.Price);
-            }
-            var sort = new
-            {
-                userPage.filedName,
-                userPage.sortType,
-
-            };
-
-
-            var payload = productslist.ToPagedList(userPage.Page, userPage.PageSize);
-            return Ok(new
-            {
-                userPage.Page,
-                userPage.PageSize,
-                sort,
-                payload
-            }
-               );
         }
         private string GenerateToken(User user)
         {
@@ -159,102 +116,13 @@ namespace APISencondHandTown.Controllers
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim("Id", user.UserId.ToString()),
-
                     new Claim("tokenID", Guid.NewGuid().ToString())
                 }),
                 Expires = DateTime.UtcNow.AddSeconds(30),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretByte), SecurityAlgorithms.HmacSha512Signature)
+                SigningCredentials=new SigningCredentials(new SymmetricSecurityKey(secretByte),SecurityAlgorithms.HmacSha512Signature)
             };
             var token = jwtToken.CreateToken(tokenDescription);
             return jwtToken.WriteToken(token);
         }
-
-        [HttpPost("addProduct")]
-        public IActionResult addProduct(ProductModel productModel)
-        {
-
-            try
-            {
-
-                var product = new Product()
-                {
-
-                    ProductName = productModel.ProductName1,
-                    Price = productModel.Price1,
-                    PriceSale = productModel.PriceSale1,
-                    ProductDetailsId = productModel.ProductDetailsId1,
-                    Amount = productModel.Amount1,
-
-
-                };
-
-                _context.Products.Add(product);
-                _context.SaveChanges();
-
-                return Ok("success addProduct");
-
-            }
-            catch (Exception e)
-            {
-                return Ok(e);
-            }
-        }
-
-        [HttpPost("addCategory")]
-        public IActionResult addCategory(CategoryModel categoryModel)
-        {
-
-
-            try
-            {
-
-                var category = new Category()
-                {
-
-                    NameCategory = categoryModel.NameCategory1,
-
-
-                };
-
-                _context.Categories.Add(category);
-                _context.SaveChanges();
-
-                return Ok("success addCategory");
-
-            }
-            catch (Exception e)
-            {
-                return Ok(e);
-            }
-
-
-        }
-
-        // [HttpPost("testAddCategory")]
-        // public IActionResult testAddCategory(Category category)
-        // {
-
-
-        //     try
-        //     {           
-
-
-        //         // NameCategory1=category.NameCategory,
-        //         _context.Categories.Add(category);
-        //         _context.SaveChanges();
-
-        //         return Ok("success");
-
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         return Ok(e);
-        //     }
-
-
-        // }
-
     }
-
-
 }

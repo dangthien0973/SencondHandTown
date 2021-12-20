@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CNTT\\project\\cuoi-ki\\TMDT\\source\\APISencondHandTown\\APISencondHandTown.csproj": {}
+    "D:\\CNTT\\project\\cuoi-ki\\TMDT\\New folder\\APISencondHandTown\\APISencondHandTown.csproj": {}
   },
   "projects": {
-    "D:\\CNTT\\project\\cuoi-ki\\TMDT\\source\\APISencondHandTown\\APISencondHandTown.csproj": {
+    "D:\\CNTT\\project\\cuoi-ki\\TMDT\\New folder\\APISencondHandTown\\APISencondHandTown.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\source\\APISencondHandTown\\APISencondHandTown.csproj",
+        "projectUniqueName": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\New folder\\APISencondHandTown\\APISencondHandTown.csproj",
         "projectName": "APISencondHandTown",
-        "projectPath": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\source\\APISencondHandTown\\APISencondHandTown.csproj",
+        "projectPath": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\New folder\\APISencondHandTown\\APISencondHandTown.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\source\\APISencondHandTown\\obj\\",
+        "outputPath": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\New folder\\APISencondHandTown\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
