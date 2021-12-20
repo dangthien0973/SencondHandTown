@@ -1,4 +1,4 @@
-﻿using APISencondHandTown.Data;
+﻿using APISencondHandTown.Repositories;
 using APISencondHandTown.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +34,11 @@ namespace APISencondHandTown
         {
 
             services.AddControllers();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRepository<User>, UserRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IRepository<Product>, ProductRepository>();
+
             services.AddDbContext<DB_TMDTContext>(option =>
             {
                 option.UseSqlServer(Configuration.GetConnectionString("MyDB"));

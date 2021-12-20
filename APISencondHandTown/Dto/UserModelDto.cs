@@ -4,24 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APISencondHandTown.Models
+namespace APISencondHandTown.Dto
 {
-    public class UserModel
+    public class UserModelDto
     {
         private string userName = string.Empty;
         private string passwords = string.Empty;
-        public UserModel()
+        public UserModelDto()
         {
 
         }
         public string UserName { get => userName; set => userName = value; }
         public string Passwords { get => passwords; set => passwords = value; }
 
-        public List<UserModel> GetListUser()
+        public List<UserModelDto> GetListUser()
         {
             try
             {
-               List<UserModel> lst = new List<UserModel>();
+               List<UserModelDto> lst = new List<UserModelDto>();
 
                 return lst;
             }

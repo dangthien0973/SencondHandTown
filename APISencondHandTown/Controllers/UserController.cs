@@ -1,18 +1,14 @@
 ﻿using APISencondHandTown.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using BC = BCrypt.Net.BCrypt;
-using System.Threading.Tasks;
-using PagedList;
-using APISencondHandTown.Error;
+using APISencondHandTown.Repositories;
+using APISencondHandTown.Dto;
 
 namespace APISencondHandTown.Controllers
 {
@@ -20,12 +16,14 @@ namespace APISencondHandTown.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly DB_TMDTContext _context;
+        private readonly IRepository<User> _userRepository;
+        private readonly IUserRepository _userRepositoryMoreMethod;
         private readonly AppSettings _appSettings;
-        public UserController(DB_TMDTContext context,IOptionsMonitor<AppSettings> optionMonitor)
+        public UserController(IOptionsMonitor<AppSettings> optionMonitor, IUserRepository _userRepositoryMoreMethod, IRepository<User> _userRepository)
         {
-            _context = context;
+            this._userRepository = _userRepository;         
             _appSettings = optionMonitor.CurrentValue;
+           this._userRepositoryMoreMethod= _userRepositoryMoreMethod;
         }
 
         [HttpGet("getAllUser")]
@@ -34,11 +32,11 @@ namespace APISencondHandTown.Controllers
             return Ok();
         }
         [HttpPost("Login")]
-        public IActionResult Validate(UserModel userModel)
+        public IActionResult Validate(UserModelDto UserModelDto)
         {
             try
             {
-                var user = _context.Users.FirstOrDefault(p => p.UserName == userModel.UserName);
+                var user = _userRepositoryMoreMethod.getByUserName(UserModelDto);
                 if (user == null)
                 {
                     return Ok(new
@@ -47,7 +45,7 @@ namespace APISencondHandTown.Controllers
                         Message = "Tên đăng nhập hoặc mật khẩu không đúng nè"
                     });
                 }                
-                if (!BC.Verify(userModel.Passwords, user.Passwords))                
+                if (!BC.Verify(UserModelDto.Passwords, user.Passwords))                
                 {
                         return Ok(new
                         {
@@ -73,12 +71,13 @@ namespace APISencondHandTown.Controllers
             }
         }
         [HttpPost("Register")]
-        public IActionResult Register(RegisterUser registerUser)
+        public IActionResult Register(RegisterUserDto registerUser)
         {
             try
             {
                 var user = new User()
                 {
+                    
                     UserName = registerUser.UserName,
                     Passwords = BC.HashPassword(registerUser.Passwords),
                     /*   Passwords=registerUser.Passwords,*/
@@ -89,10 +88,10 @@ namespace APISencondHandTown.Controllers
                     Roles = registerUser.Roles,
                     Statuss = registerUser.Statuss,
                 };
-                if(_context.Users.FirstOrDefault(p => p.UserName == registerUser.UserName) == null)
+                if(_userRepositoryMoreMethod.isCheckByUserName(registerUser) == null)
                 {
-                    _context.Users.Add(user);
-                    _context.SaveChanges();                   
+                  _userRepository.Add(user);
+                  _userRepository.SaveChanges();                  
                 }
                 else
                 {
@@ -104,33 +103,6 @@ namespace APISencondHandTown.Controllers
             {
                 return Ok(e.Message);              
             }
-        }
-        [HttpPost("getProducList")]
-        public IActionResult getProducList(userPage userPage)
-        {
-            IEnumerable<Product> productslist = _context.Products;
-            if (userPage.filedName == "price" && userPage.sortType == "des")
-            {
-                productslist = productslist.OrderByDescending(s => s.Price);
-            }
-            else if (userPage.filedName == "price" && userPage.sortType == "asc")
-            {
-                productslist = productslist.OrderBy(s => s.Price);
-            }
-            var sort = new
-            {
-                userPage.filedName,
-                userPage.sortType,
-            };
-            var payload = productslist.ToPagedList(userPage.Page, userPage.PageSize);
-            return Ok(new
-            {
-                userPage.Page,
-                userPage.PageSize,
-                sort,
-                payload
-            }
-               );
         }
         private string GenerateToken(User user)
         {
