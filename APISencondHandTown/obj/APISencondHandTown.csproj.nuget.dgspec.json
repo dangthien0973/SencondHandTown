@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\TMDT\\APISencondHandTown\\APISencondHandTown.csproj": {}
+    "D:\\CNTT\\project\\cuoi-ki\\TMDT\\conflict\\SencondHandTown\\APISencondHandTown\\APISencondHandTown.csproj": {}
   },
   "projects": {
-    "E:\\TMDT\\APISencondHandTown\\APISencondHandTown.csproj": {
+    "D:\\CNTT\\project\\cuoi-ki\\TMDT\\conflict\\SencondHandTown\\APISencondHandTown\\APISencondHandTown.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TMDT\\APISencondHandTown\\APISencondHandTown.csproj",
+        "projectUniqueName": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\conflict\\SencondHandTown\\APISencondHandTown\\APISencondHandTown.csproj",
         "projectName": "APISencondHandTown",
-        "projectPath": "E:\\TMDT\\APISencondHandTown\\APISencondHandTown.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "E:\\TMDT\\APISencondHandTown\\obj\\",
+        "projectPath": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\conflict\\SencondHandTown\\APISencondHandTown\\APISencondHandTown.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\CNTT\\project\\cuoi-ki\\TMDT\\conflict\\SencondHandTown\\APISencondHandTown\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,6 +91,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.12, 5.0.12]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
