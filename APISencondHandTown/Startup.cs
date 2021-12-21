@@ -38,8 +38,6 @@ namespace APISencondHandTown
             services.AddScoped<IRepository<User>, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IRepository<Product>, ProductRepository>();
-            services.AddScoped<IProductDetailRepo, ProductDetailRepo>();
-            services.AddScoped<IRepository<ProductDetail>, ProductDetailRepo>();
 
             services.AddDbContext<DB_TMDTContext>(option =>
             {
