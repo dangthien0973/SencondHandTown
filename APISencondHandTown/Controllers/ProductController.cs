@@ -61,6 +61,7 @@ namespace APISencondHandTown.Controllers
 
                 };
                 
+
                 _productDetailRepository.Add(productDetail);
                 _productDetailRepository.SaveChanges();
                 _productRepository.Add(product);
