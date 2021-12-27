@@ -7,8 +7,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using BC = BCrypt.Net.BCrypt;
-using APISencondHandTown.Repositories;
+using APISencondHandTown.unitOfWork.Repositories;
 using APISencondHandTown.Dto;
+using APISencondHandTown.unitOfWork;
 
 namespace APISencondHandTown.Controllers
 {
@@ -16,12 +17,12 @@ namespace APISencondHandTown.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IUnitOfWork unitOfWork;
         private readonly IUserRepository _userRepositoryMoreMethod;
         private readonly AppSettings _appSettings;
-        public UserController(IOptionsMonitor<AppSettings> optionMonitor, IUserRepository _userRepositoryMoreMethod, IRepository<User> _userRepository)
+        public UserController(IUnitOfWork unitOfWork, IOptionsMonitor<AppSettings> optionMonitor, IUserRepository _userRepositoryMoreMethod)
         {
-            this._userRepository = _userRepository;         
+            this.unitOfWork = unitOfWork;              
             _appSettings = optionMonitor.CurrentValue;
            this._userRepositoryMoreMethod= _userRepositoryMoreMethod;
         }
@@ -90,8 +91,8 @@ namespace APISencondHandTown.Controllers
                 };
                 if(_userRepositoryMoreMethod.isCheckByUserName(registerUser) == null)
                 {
-                  _userRepository.Add(user);
-                  _userRepository.SaveChanges();                  
+                    unitOfWork.UserRepository.Add(user);
+                    unitOfWork.SaveChanges();                
                 }
                 else
                 {

@@ -4,7 +4,7 @@ using APISencondHandTown.Models;
 
 using System.Linq;
 
-namespace APISencondHandTown.Repositories
+namespace APISencondHandTown.unitOfWork.Repositories
 {
     public interface IUserRepository
     {
