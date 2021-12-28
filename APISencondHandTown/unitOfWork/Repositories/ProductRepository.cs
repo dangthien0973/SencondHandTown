@@ -1,6 +1,5 @@
 ﻿
 using APISencondHandTown.Models;
-using APISencondHandTown.Repositories;
 using APISencondHandTown.Dto;
 using System;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Linq.Expressions;
 using System.Collections.Generic;
 using PagedList;
 
-namespace APISencondHandTown.Repositories
+namespace APISencondHandTown.unitOfWork.Repositories
 {
     public interface IProductRepository
     {

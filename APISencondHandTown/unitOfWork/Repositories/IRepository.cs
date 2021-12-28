@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace APISencondHandTown.Repositories
+namespace APISencondHandTown.unitOfWork.Repositories
 {
     public interface IRepository<T>
     {
